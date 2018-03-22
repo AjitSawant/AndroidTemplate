@@ -16,8 +16,8 @@ public class Constants {
     public static final int SYNC_STOP = 1001;
 
     //Local database link
-    //public static final String BASE_URL = "http://192.168.1.133/InamdarApp/";        // local live
-    public static final String BASE_URL = "http://103.229.5.22/InamdarApp/";        // developer live
+    public static final String BASE_URL = "http://192.168.1.133/InamdarApp/";        // local live
+    //public static final String BASE_URL = "http://103.229.5.22/InamdarApp/";        // developer live
 
     //Live database link
     //public static final String BASE_URL = "http://49.248.153.18:8080/InamdarApp/";     // inamdar public live(client side)
