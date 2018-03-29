@@ -31,8 +31,7 @@ import com.palash.sampleapp.utilities.Constants;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Context context;
     private DatabaseContract databaseContract;

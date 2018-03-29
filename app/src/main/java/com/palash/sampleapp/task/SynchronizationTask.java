@@ -39,7 +39,6 @@ public class SynchronizationTask implements Task {
     private ArrayList<ELLogin> elLoginArrayList;
 
     private TaskResult taskResult;
-    private NotificationMessage notificationMessage;
 
     private String responseString;
     private int responseCode;

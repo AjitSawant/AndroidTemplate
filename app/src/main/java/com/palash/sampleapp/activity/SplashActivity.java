@@ -66,7 +66,7 @@ public class SplashActivity extends AppCompatActivity {
 //                    } else {
 //                        startActivity(new Intent(context, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 //                    }
-                    startActivity(new Intent(context, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    startActivity(new Intent(context, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                     finish();
                 }
             }, 1000);

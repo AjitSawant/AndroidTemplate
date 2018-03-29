@@ -266,7 +266,6 @@ public class DatabaseAdapter {
                         DatabaseContract.Login.TABLE_NAME, values, whereClause, null);
             } catch (SQLException e) {
                 e.printStackTrace();
-                ;
             } finally {
                 databaseContract.close();
             }

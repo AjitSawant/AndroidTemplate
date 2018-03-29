@@ -36,22 +36,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Context context;
     private DatabaseContract databaseContract;
     private DatabaseAdapter databaseAdapter;
-    private DatabaseAdapter.SyncAdapter syncAdapter;
     private DatabaseAdapter.LoginAdapter loginAdapter;
 
     private EditText login_edt_username;
     private EditText login_edt_password;
     private CheckBox login_cb_remember_me;
-    //private RadioButton login_type_employee_rbtn;
-    //private RadioButton login_type_doctor_rbtn;
     private Button login_btn_sign_in;
 
+    private ELLogin elLogin;
     private ArrayList<ELLogin> listLogin;
 
     private String Username;
     private String Password;
     private boolean RememberMe;
-    //private boolean loginType = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,21 +56,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         Init();
         InitView();
-        CheckPermission();
-        //SetUpSynchronization();
-    }
-
-    private void CheckPermission() {
-        try {
-            if (Build.VERSION.SDK_INT >= 23) {
-                if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                            Manifest.permission.READ_CONTACTS}, 1);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private void Init() {
@@ -81,8 +63,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             context = this;
             databaseContract = new DatabaseContract(context);
             databaseAdapter = new DatabaseAdapter(databaseContract);
-            syncAdapter = databaseAdapter.new SyncAdapter();
             loginAdapter = databaseAdapter.new LoginAdapter();
+            elLogin = new ELLogin();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -93,8 +75,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             login_edt_username = (EditText) findViewById(R.id.login_edt_username);
             login_edt_password = (EditText) findViewById(R.id.login_edt_password);
             login_cb_remember_me = (CheckBox) findViewById(R.id.login_cb_remember_me);
-            //login_type_employee_rbtn = (RadioButton) findViewById(R.id.login_type_employee_rbtn);
-            //login_type_doctor_rbtn = (RadioButton) findViewById(R.id.login_type_doctor_rbtn);
             login_btn_sign_in = (Button) findViewById(R.id.login_btn_sign_in);
 
             login_btn_sign_in.setOnClickListener(this);
@@ -122,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Username = login_edt_username.getText().toString();
                     Password = login_edt_password.getText().toString();
                     RememberMe = login_cb_remember_me.isChecked();
-                    //loginType = login_type_employee_rbtn.isChecked();
+
                     new LoginTask().execute();
                 }
                 break;
@@ -161,14 +141,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 login_edt_username.setText(listLogin.get(0).getLoginName());
                 login_edt_password.setText(listLogin.get(0).getPassword());
                 login_cb_remember_me.setChecked(true);
-                /*if (listLogin.get(0).getLoginType() != null && (listLogin.get(0).getLoginType().equals("True")
-                        || listLogin.get(0).getLoginType().equals("true") || listLogin.get(0).getLoginType().equals("1"))) {
-                    login_type_employee_rbtn.setChecked(false);
-                    login_type_doctor_rbtn.setChecked(true);
-                } else {
-                    login_type_doctor_rbtn.setChecked(false);
-                    login_type_employee_rbtn.setChecked(true);
-                }*/
             } else {
                 ClearView();
             }
@@ -182,8 +154,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             login_edt_username.setText(null);
             login_edt_password.setText(null);
             login_cb_remember_me.setChecked(false);
-            //login_type_employee_rbtn.setChecked(true);
-            //login_type_doctor_rbtn.setChecked(false);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -207,12 +177,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         protected String doInBackground(Void... params) {
             String responseString = "";
             try {
-                /*String mLoginBy = "1";
-                if (loginType == true) {
-                    mLoginBy = "1";
-                } else {
-                    mLoginBy = "0";
-                }*/
                 serviceConsumer = new WebServiceConsumer(context, Username, Password);
                 Log.d(Constants.TAG, "Time Start: " + DateFormat.getDateTimeInstance().format(new Date()));
                 response = serviceConsumer.GET(Constants.LOGIN_URL);
