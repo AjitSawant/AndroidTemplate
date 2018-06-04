@@ -22,7 +22,7 @@ public class Constants {
     //Live database link
     //public static final String BASE_URL = "http://49.248.153.18:8080/InamdarApp/";     // inamdar public live(client side)
 
-    public static final String LOGIN_URL = BASE_URL + "Login/DocLogin?LoginType=";
+    public static final String LOGIN_URL = BASE_URL + "Login/DocLogin?LoginType=1";
 
     public static final String STATUS_LOG_IN = "login";
     public static final String STATUS_LOG_OUT = "logout";

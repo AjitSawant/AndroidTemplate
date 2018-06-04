@@ -42,7 +42,7 @@ public class DatabaseContract {
         public static final String TABLE_NAME = "T_Login";
 
         public static final String COLUMN_NAME_USER_ID = "UserId";
-        public static final String COLUMN_NAME_LOGIN_NAME = "LoginName";
+        public static final String COLUMN_NAME_LOGIN_NAME = "Username";
         public static final String COLUMN_NAME_PASSWORD = "Password";
         public static final String COLUMN_NAME_LOGIN_STATUS = "LoginStatus";
         public static final String COLUMN_NAME_REMEMBER_ME = "RememberMe";

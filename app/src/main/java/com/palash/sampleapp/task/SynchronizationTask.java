@@ -67,7 +67,7 @@ public class SynchronizationTask implements Task {
             elLogin = elLoginArrayList.get(0);
             if (elLogin.getLoginStatus() != null && elLogin.getLoginStatus().equals("login")) {
                 elSync = syncAdapter.GetSync();
-                elSync.setDateTime(DateFormat.getDateTimeInstance().format(new Date()));
+                    elSync.setDateTime(DateFormat.getDateTimeInstance().format(new Date()));
                 elSync.setIsSyncing("1");
                 syncAdapter.Add(elSync);
 

@@ -71,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:text="Employee"
                         android:checked="true"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"/>
 
                     <RadioButton
                         android:id="@+id/login_type_doctor_rbtn"

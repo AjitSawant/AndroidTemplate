@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.view.ContextThemeWrapper;
@@ -166,4 +167,12 @@ public class LocalSettings {
         }
         return status;
     }
+
+    public static Typeface setFont_text(Context context) {
+        Typeface tf = Typeface.createFromAsset(context.getAssets(),
+                "fonts/smart watch.ttf");
+        return tf;
+    }
+
+
 }

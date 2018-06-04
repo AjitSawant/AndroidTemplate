@@ -12,6 +12,7 @@ import com.palash.sampleapp.database.DatabaseAdapter;
 import com.palash.sampleapp.database.DatabaseContract;
 import com.palash.sampleapp.entiry.ELLogin;
 import com.palash.sampleapp.task.SynchronizationTask;
+import com.palash.sampleapp.utilities.Constants;
 
 import java.util.ArrayList;
 
@@ -60,13 +61,12 @@ public class SplashActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-//                    if (listLogin != null && listLogin.size() > 0
-//                            && listLogin.get(0).getLoginStatus().equals(Constants.STATUS_LOG_IN)) {
-//                        startActivity(new Intent(context, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-//                    } else {
-//                        startActivity(new Intent(context, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-//                    }
-                    startActivity(new Intent(context, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    if (listLogin != null && listLogin.size() > 0
+                            && listLogin.get(0).getLoginStatus().equals(Constants.STATUS_LOG_IN)) {
+                        startActivity(new Intent(context, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    } else {
+                        startActivity(new Intent(context, LoginActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    }
                     finish();
                 }
             }, 1000);

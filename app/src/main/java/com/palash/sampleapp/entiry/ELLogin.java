@@ -21,7 +21,7 @@ public class ELLogin {
         UserId = userId;
     }
 
-    @JsonProperty("LoginName")
+    @JsonProperty("Username")
     public String getLoginName() {
         return LoginName;
     }

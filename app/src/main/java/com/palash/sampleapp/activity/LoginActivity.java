@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -78,6 +79,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             login_btn_sign_in = (Button) findViewById(R.id.login_btn_sign_in);
 
             login_btn_sign_in.setOnClickListener(this);
+
+           /* Typeface text_font = LocalSettings.setFont_text(context);
+            login_edt_username.setTypeface(text_font);*/
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -222,7 +227,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 elLogin.setLoginStatus(Constants.STATUS_LOG_IN);
                 loginAdapter.delete();
                 loginAdapter.create(elLogin);
-                //startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+               startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         } catch (Exception e) {
             e.printStackTrace();
